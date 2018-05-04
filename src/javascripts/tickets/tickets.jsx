@@ -1,39 +1,34 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { uniqueId } from 'lodash';
 
-const createReactClass = require('create-react-class');
+const flightDetail = (item, value) => {
+  const vdom = value === 'departure' ? [
+    <h2 key={uniqueId()}>{item.departure_time}</h2>,
+    <span key={uniqueId()}>{item.origin}, {item.origin_name}</span>,
+    <p key={uniqueId()}>{item.departure_date}</p>,
+  ] : [
+    <h2>{item.arrival_time}</h2>,
+    <span>{item.destination}, {item.destination_name}</span>,
+    <p>{item.arrival_date}</p>,
+  ];
 
-const FlightDetails = createReactClass({
-  render() {
+  return (
+    <div>
+      {vdom}
+    </div>
+  );
+};
 
-  },
-});
-
-
-const Tickets = createReactClass({
+class Tickets extends React.Component {
   render() {
     const { data } = this.props;
 
-    // const test =
-
-    const airportOrigin = <p>{item.destination}</p>;
     return (
       <div>
-        <p>Helll</p>
-        <div>
-          {data.map((item) =>
-            <div key={`ticket-${uniqueId()}`}>
-              <p>{item.departure_time}</p>
-              <p>{item.origin}</p>
-              <p>{item.departure_date}</p>
-            </div>
-          )
-          }
-        </div>
+        {data.map(item => <div key={uniqueId()}>{flightDetail(item, 'departure')}</div>)}
       </div>
     );
-  },
-});
+  }
+}
 
 export default Tickets;
