@@ -95,6 +95,10 @@ module.exports = {
         to: './assets/favicon',
       },
       {
+        from: './src/javascripts/tickets',
+        to: './javascripts/tickets',
+      },
+      {
         from: './src/assets/favicon',
         to: './assets/favicon',
       },

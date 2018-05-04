@@ -1,0 +1,45 @@
+@import "_variable";
+@import "_typography";
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-weight: $font-regular;
+  font-size: $p-font-size;
+  color: $p-font-color;
+  width: $width;
+  height: $height;
+  background: $body-bg-color;
+  display: flex;
+  justify-content: center;
+}
+
+.hello {
+  margin-top: 20vh;
+  text-align: center;
+  color: $h1-font-color;
+  font-size: $h1-font-size;
+  font-weight: $font-bold;
+}
+
+.description {
+  margin-top: 2px;
+  color: $p-font-color;
+  text-align: center;
+}
+
+.image-insert {
+  margin: 20px auto;
+  opacity: 0.6;
+  display: block;
+  width: 400px;
+  height: 300px;
+}
