@@ -68,20 +68,40 @@ class Filter extends React.Component {
 // }
 
 const dataFiltred = () => {
-  const numbers = [0, 1];
+  // const text = (obj, value) => {
+  //   return obj` === ${value}`;
+  // };
+  const numbers = [0];
 
   // const all =
 
   const number = (obj) => {
-    return obj === 0 || obj === 2;
+    const Text = (value) => {
+      const condition = obj === value;
+      return condition;
+    };
+    // const listItem = (numbers.map((numbers) => (obj === numbers)).join(' || '));
+    const condition = obj === 0;
+    // console.log(typeof(listItem));
+    // console.log(listItem);
+    // console.log(typeof(condition));
+    // console.log('!!!!!!!!!!!!!! listItem', typeof(listItem));
+    // console.log('!!!!!!!!!!!!!! listItem', listItem);
+    // obj === 0 || obj === 2
+
+    return (
+      condition
+    );
   };
 
-  const filterByStops = (item) => {
-    if (number(item.stops)) {
-      return true;
-    }
-    return false;
-  };
+  // const filterByStops = (item) => {
+  //   if (number(item.stops)) {
+  //     return true;
+  //   }
+  //   return false;
+  // };
+
+  const filterByStops = (item) => number(item.stops);
 
   // const listItems = numbers.map(numbers => {
   //   return (
