@@ -29,6 +29,18 @@ class Filter extends React.Component {
 }
 
 const dataFiltred = () => {
+  const numberStops = [0, 1, 2, 3];
+
+  const condition = (obj) => {
+    let result = obj === numberStops[0];
+    let separator = '||';
+    for (let i = 1; i < numberStops.length; i += 1) {
+        result += obj === numberStops[i];
+      console.log("result", result);
+      console.log("numberStops length", numberStops.length);
+    }
+    return result;
+  };
 
   const number = (obj) => {
     // const listItem = (numbers.map((numbers) => (obj === numbers)).join(' || '));
@@ -39,7 +51,8 @@ const dataFiltred = () => {
     );
   };
 
-  const filterByStops = (item) => number(item.stops);
+  // const filterByStops = (item) => number(item.stops);
+  const filterByStops = (item) => condition(item.stops);
   return dataSorted.filter(filterByStops);
 };
 
