@@ -7,36 +7,6 @@ import Tickets from './tickets/tickets.jsx';
 
 const dataSorted = dataJSON.tickets.sort((a, b) => a.price - b.price);
 
-// class FlavorForm extends React.Component {
-//   state = { value: '' };
-//
-//   handleChange = (e) => {
-//     this.setState({ value: e.target.value });
-//   };
-//
-//   handleSubmit = (e) => {
-//     e.preventDefault();
-//     alert(`Your favorite flavor is: ${this.state.value}`);
-//   };
-//
-//   render() {
-//     return (
-//       <form onSubmit={this.handleSubmit}>
-//         <label>
-//           Pick your favorite La Croix flavor:
-//           <select value={this.state.value} onChange={this.handleChange}>
-//             <option value="grapefruit">Grapefruit</option>
-//             <option value="lime">Lime</option>
-//             <option value="coconut">Coconut</option>
-//             <option value="mango">Mango</option>
-//           </select>
-//         </label>
-//         <input type="submit" value="Submit" />
-//       </form>
-//     );
-//   }
-// }
-
 class Filter extends React.Component {
   state = { value: '' };
 
@@ -58,56 +28,18 @@ class Filter extends React.Component {
   }
 }
 
-// class ListItems extends React.Component {
-//   render() {
-//     const numbers = [0, 1];
-//     return (
-//       numbers.map(numbers => numbers)
-//     );
-//   }
-// }
-
 const dataFiltred = () => {
-  // const text = (obj, value) => {
-  //   return obj` === ${value}`;
-  // };
-  const numbers = [0];
-
-  // const all =
 
   const number = (obj) => {
-    const Text = (value) => {
-      const condition = obj === value;
-      return condition;
-    };
     // const listItem = (numbers.map((numbers) => (obj === numbers)).join(' || '));
     const condition = obj === 0;
-    // console.log(typeof(listItem));
-    // console.log(listItem);
-    // console.log(typeof(condition));
-    // console.log('!!!!!!!!!!!!!! listItem', typeof(listItem));
-    // console.log('!!!!!!!!!!!!!! listItem', listItem);
     // obj === 0 || obj === 2
-
     return (
       condition
     );
   };
 
-  // const filterByStops = (item) => {
-  //   if (number(item.stops)) {
-  //     return true;
-  //   }
-  //   return false;
-  // };
-
   const filterByStops = (item) => number(item.stops);
-
-  // const listItems = numbers.map(numbers => {
-  //   return (
-  //     item.stops === numbers
-  //   );
-  // });
   return dataSorted.filter(filterByStops);
 };
 
@@ -117,7 +49,7 @@ class App extends React.Component {
   };
 
   constructor(props) {
-    super(props); // всегда обязательно
+    super(props);
     this.state = {
       all: this.props.all,
       noStops: true,
@@ -138,9 +70,11 @@ class App extends React.Component {
     });
   }
 
-  onChangeAll = (e) => {
-
-  };
+  onChangeAll(e) {
+    if(this.props.all === false) {
+      return;
+    }
+  }
 
   // handleChange = (event) => {
   //   const name = event.target.name;
@@ -170,7 +104,7 @@ class App extends React.Component {
     isCheked.push(
       //     <p key={uniqueId()}>{this.state.all ? 'Checked' : 'Unchecked'}</p>,
       <p key={uniqueId()}>{this.state.noStops ? 'Checked' : 'Unchecked'}</p>);
-    const checkboxisAll = (<span><input name="all" type="checkbox" onClick={this.toggle.bind(this)} /><label>Все</label></span>);
+    const checkboxisAll = (<span><input name="all" type="checkbox" checked={this.state.all} onChange={this.toggle.bind(this)} /><label>Все</label></span>);
     const checkboxNoStops = (<span><input name="noStops" type="checkbox" onChange={this.toggle.bind(this)} /><label>Без пересадок {this.state.noStops}</label></span>);
     return (
       <div>
@@ -212,6 +146,7 @@ class App extends React.Component {
         </div>
         <Filter />
         <Tickets data={dataFiltred()} />
+        {/*<Tickets data={<FiltredData />} />*/}
       </div>
     );
   }
