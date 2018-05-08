@@ -75,27 +75,6 @@ class App extends React.Component {
     });
   }
 
-  isAll = (e) => {
-    const isAll = this.state.all;
-    const isNoStops = this.state.noStops;
-    const isOneStops = this.state.oneStops;
-    const isTwoStops = this.state.twoStops;
-    const isThreeStops = this.state.threeStops;
-
-    const isAllSelected = () => {
-      let AllStops = [isNoStops, isOneStops, isTwoStops, isThreeStops];
-      let AllStopsFilteredCountTrue = [isNoStops, isOneStops, isTwoStops, isThreeStops].filter(item => item === true).length;
-      if (AllStopsFilteredCountTrue === AllStops.length - 1) {
-        return true;
-      }
-      return false;
-    };
-
-    this.setState({
-      all: isAllSelected(),
-    });
-  }
-
   handleChange = (e) => {
     const name = e.target.name;
     const isAll = this.state.all;
@@ -120,16 +99,35 @@ class App extends React.Component {
   }
 
 // ? false : isAllSelected()
-  isAllSelected = (e) => {
+//   isAllSelected = (e) => {
+//     const isNoStops = this.state.noStops;
+//     const isOneStops = this.state.oneStops;
+//     const isTwoStops = this.state.twoStops;
+//     const isThreeStops = this.state.threeStops;
+//     if (isNoStops && isOneStops && isTwoStops && isThreeStops) {
+//       this.setState({
+//         all: e.target.checked,
+//       });
+//     }
+//   }
+
+  isAllSelec = (e) => {
+
+    const isAll = this.state.all;
     const isNoStops = this.state.noStops;
     const isOneStops = this.state.oneStops;
     const isTwoStops = this.state.twoStops;
     const isThreeStops = this.state.threeStops;
-    if (isNoStops && isOneStops && isTwoStops && isThreeStops) {
-      this.setState({
-        all: e.target.checked,
-      });
-    }
+
+    const isAllSelected = () => {
+      let AllStops = [isNoStops, isOneStops, isTwoStops, isThreeStops];
+      let AllStopsFilteredCountTrue = AllStops.filter(item => item === true).length;
+      return AllStopsFilteredCountTrue === 3 ? e.target.checked : false;
+    };
+
+    this.setState({
+      all: isAllSelected(),
+    });
   }
 
   Change = (e) => {
@@ -166,11 +164,12 @@ class App extends React.Component {
       //     <p key={uniqueId()}>{this.state.all ? 'Checked' : 'Unchecked'}</p>,
       {/*<p key={uniqueId()}>{this.state.noStops ? 'Checked' : 'Unchecked'}</p>);*/}
     const isChecked = this.state.all ? 'checked' : 'unchecked';
-    const checkboxisAll = (<span><input name="all" type="checkbox" onChange={this.handleChange.bind(this)} onClick={this.isAll.bind(this)} checked={this.state.all} /><label>Все {isChecked}</label></span>);
-    const checkboxNoStops = (<span><input name="noStops" type="checkbox" onClick={this.handleChange.bind(this)} onChange={this.isAll.bind(this)} /><label>Без пересадок {this.state.noStops ? 'ON' : 'OFF'}</label></span>);
-    const checkboxOneStops = (<span><input name="oneStops" type="checkbox" onClick={this.handleChange.bind(this)} onChange={this.isAll.bind(this)} /><label>1 пересадка {this.state.oneStops ? 'ON' : 'OFF'}</label></span>);
-    const checkboxTwoStops = (<span><input name="twoStops" type="checkbox" onClick={this.handleChange.bind(this)} onChange={this.isAll.bind(this)} /><label>2 пересадки {this.state.twoStops ? 'ON' : 'OFF'}</label></span>);
-    const checkboxThreeStops = (<span><input name="threeStops" type="checkbox" onClick={this.handleChange.bind(this)} onChange={this.isAll.bind(this)} /><label>3 пересадки {this.state.threeStops ? 'ON' : 'OFF'}</label></span>);
+
+    const checkboxisAll = (<span><input name="all" type="checkbox" onChange={this.handleChange.bind(this)} onClick={this.isAllSelec.bind(this)} checked={this.state.all} /><label>Все {this.state.all ? 'ON' : 'OFF'}</label></span>);
+    const checkboxNoStops = (<span><input name="noStops" type="checkbox" onChange={this.handleChange.bind(this)} onClick={this.isAllSelec.bind(this)} checked={this.state.noStops} /><label>Без пересадок {this.state.noStops ? 'ON' : 'OFF'}</label></span>);
+    const checkboxOneStops = (<span><input name="oneStops" type="checkbox" onChange={this.handleChange.bind(this)} onClick={this.isAllSelec.bind(this)} checked={this.state.oneStops} /><label>1 пересадка {this.state.oneStops ? 'ON' : 'OFF'}</label></span>);
+    const checkboxTwoStops = (<span><input name="twoStops" type="checkbox" onChange={this.handleChange.bind(this)} onClick={this.isAllSelec.bind(this)} /><label>2 пересадки {this.state.twoStops ? 'ON' : 'OFF'}</label></span>);
+    const checkboxThreeStops = (<span><input name="threeStops" type="checkbox" onChange={this.handleChange.bind(this)} onClick={this.isAllSelec.bind(this)} /><label>3 пересадки {this.state.threeStops ? 'ON' : 'OFF'}</label></span>);
     return (
       <div>
         <div className="hello">
