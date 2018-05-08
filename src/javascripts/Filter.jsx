@@ -14,7 +14,7 @@ class Filter extends React.Component {
   // };
 
   render() {
-    const checkboxisAll = (<span><input name="all" type="checkbox" /><label>Все</label></span>);
+    const checkboxisAll = (<span><input name="all" type="checkbox" checked={this.props.isCheckedAll} onChange={this.props.isChangeAll} /><label>Все {this.props.isChecked}</label></span>);
     const checkboxNoStops = (<span><input name="noStops" type="checkbox" /><label>Без пересадок</label></span>);
     const checkboxOneStops = (<span><input name="oneStops" type="checkbox" /><label>1 пересадка</label></span>);
     const checkboxTwoStops = (<span><input name="twoStops" type="checkbox" /><label>2 пересадки</label></span>);

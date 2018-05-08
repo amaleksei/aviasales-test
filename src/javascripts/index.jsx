@@ -4,7 +4,7 @@ import { uniqueId } from 'lodash';
 
 import dataJSON from './tickets.json';
 import Tickets from './tickets/Tickets.jsx';
-import Filter from './Filter.jsx';
+// import Filter from './Filter.jsx';
 
 const dataSorted = dataJSON.tickets.sort((a, b) => a.price - b.price);
 
@@ -13,11 +13,11 @@ const dataFiltred = () => {
 
   const condition = (obj) => {
     let result = obj === numberStops[0];
-    let separator = '||';
+    const separator = '||';
     for (let i = 1; i < numberStops.length; i += 1) {
-        result += obj === numberStops[i];
-      console.log("result", result);
-      console.log("numberStops length", numberStops.length);
+      result += obj === numberStops[i];
+      // console.log('result', result);
+      // console.log('numberStops length', numberStops.length);
     }
     return result;
   };
@@ -32,7 +32,7 @@ const dataFiltred = () => {
   };
 
   // const filterByStops = (item) => number(item.stops);
-  const filterByStops = (item) => condition(item.stops);
+  const filterByStops = item => condition(item.stops);
   return dataSorted.filter(filterByStops);
 };
 
@@ -41,16 +41,28 @@ class App extends React.Component {
   //   all: true,
   // };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      all: true,
-      noStops: false,
-      oneStops: false,
-      twoStops: false,
-      threeStops: false,
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.onChange = this.onChange.bind(this);
+  //   this.handleChange = this.handleChange.bind(this);
+  //   this.state = {
+  //     all: true,
+  //     noStops: false,
+  //     oneStops: false,
+  //     twoStops: false,
+  //     threeStops: false,
+  //     testNumber: 1000,
+  //   };
+  // }
+
+  state = {
+    all: true,
+    noStops: false,
+    oneStops: false,
+    twoStops: false,
+    threeStops: false,
+    testNumber: 1000,
+  };
 
 
   // this.setState({ isShown: !this.state.isShown });
@@ -63,17 +75,66 @@ class App extends React.Component {
     });
   }
 
-  onChangeAll(e) {
+  isAll = (e) => {
     const isAll = this.state.all;
-    if(isAll === false) {
+    const isNoStops = this.state.noStops;
+    const isOneStops = this.state.oneStops;
+    const isTwoStops = this.state.twoStops;
+    const isThreeStops = this.state.threeStops;
+
+    const isAllSelected = () => {
+      let AllStops = [isNoStops, isOneStops, isTwoStops, isThreeStops];
+      let AllStopsFilteredCountTrue = [isNoStops, isOneStops, isTwoStops, isThreeStops].filter(item => item === true).length;
+      if (AllStopsFilteredCountTrue === AllStops.length - 1) {
+        return true;
+      }
+      return false;
+    };
+
+    this.setState({
+      all: isAllSelected(),
+    });
+  }
+
+  handleChange = (e) => {
+    const name = e.target.name;
+    const isAll = this.state.all;
+    const isNoStops = this.state.noStops;
+    const isOneStops = this.state.oneStops;
+    const isTwoStops = this.state.twoStops;
+    const isThreeStops = this.state.threeStops;
+
+    this.setState({
+      [name]: e.target.checked,
+    });
+
+    // if (isAllSelected()) {
+    //   this.setState({
+    //     all: true,
+    //   });
+    // } else {
+    //   this.setState({
+    //     all: false,
+    //   });
+    // }
+  }
+
+// ? false : isAllSelected()
+  isAllSelected = (e) => {
+    const isNoStops = this.state.noStops;
+    const isOneStops = this.state.oneStops;
+    const isTwoStops = this.state.twoStops;
+    const isThreeStops = this.state.threeStops;
+    if (isNoStops && isOneStops && isTwoStops && isThreeStops) {
       this.setState({
-        isAll: !isAll,
-        noStops: true,
-        oneStops: true,
-        twoStops: true,
-        threeStops: true,
+        all: e.target.checked,
       });
     }
+  }
+
+  Change = (e) => {
+    handleChange();
+    isAllSelected();
   }
 
   // handleChange = (event) => {
@@ -100,18 +161,36 @@ class App extends React.Component {
   //   item.stops === 0
   // };
   render() {
-    const isCheked = [];
-    isCheked.push(
+    // const isCheked = [];
+    // isCheked.push(
       //     <p key={uniqueId()}>{this.state.all ? 'Checked' : 'Unchecked'}</p>,
-      <p key={uniqueId()}>{this.state.noStops ? 'Checked' : 'Unchecked'}</p>);
+      {/*<p key={uniqueId()}>{this.state.noStops ? 'Checked' : 'Unchecked'}</p>);*/}
+    const isChecked = this.state.all ? 'checked' : 'unchecked';
+    const checkboxisAll = (<span><input name="all" type="checkbox" onChange={this.handleChange.bind(this)} onClick={this.isAll.bind(this)} checked={this.state.all} /><label>Все {isChecked}</label></span>);
+    const checkboxNoStops = (<span><input name="noStops" type="checkbox" onClick={this.handleChange.bind(this)} onChange={this.isAll.bind(this)} /><label>Без пересадок {this.state.noStops ? 'ON' : 'OFF'}</label></span>);
+    const checkboxOneStops = (<span><input name="oneStops" type="checkbox" onClick={this.handleChange.bind(this)} onChange={this.isAll.bind(this)} /><label>1 пересадка {this.state.oneStops ? 'ON' : 'OFF'}</label></span>);
+    const checkboxTwoStops = (<span><input name="twoStops" type="checkbox" onClick={this.handleChange.bind(this)} onChange={this.isAll.bind(this)} /><label>2 пересадки {this.state.twoStops ? 'ON' : 'OFF'}</label></span>);
+    const checkboxThreeStops = (<span><input name="threeStops" type="checkbox" onClick={this.handleChange.bind(this)} onChange={this.isAll.bind(this)} /><label>3 пересадки {this.state.threeStops ? 'ON' : 'OFF'}</label></span>);
     return (
       <div>
         <div className="hello">
           <span>Hello webpack!</span>
         </div>
-        <Filter />
+        {/*<Filter number={this.state.testNumber} isCheckedAll={this.state.all} isChangeAll={this.onChangeAll} isChecked={this.state.all ? 'ON' : 'OFF'} />*/}
+        <div className="FilterData">
+          <h1>Количество пересадок</h1>
+          {checkboxisAll}
+          <br />
+          {checkboxNoStops}
+          <br />
+          {checkboxOneStops}
+          <br />
+          {checkboxTwoStops}
+          <br />
+          {checkboxThreeStops}
+        </div>
         <Tickets data={dataFiltred()} />
-        {/*<Tickets data={<FiltredData />} />*/}
+        {/* <Tickets data={<FiltredData />} /> */}
       </div>
     );
   }
