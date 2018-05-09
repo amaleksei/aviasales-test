@@ -8,33 +8,7 @@ import Tickets from './tickets/Tickets.jsx';
 
 const dataSorted = dataJSON.tickets.sort((a, b) => a.price - b.price);
 
-const dataFiltred = () => {
-  const numberStops = [0, 1, 2, 3];
 
-  const condition = (obj) => {
-    let result = obj === numberStops[0];
-    const separator = '||';
-    for (let i = 1; i < numberStops.length; i += 1) {
-      result += obj === numberStops[i];
-      // console.log('result', result);
-      // console.log('numberStops length', numberStops.length);
-    }
-    return result;
-  };
-
-  const number = (obj) => {
-    // const listItem = (numbers.map((numbers) => (obj === numbers)).join(' || '));
-    const condition = obj === 0;
-    // obj === 0 || obj === 2
-    return (
-      condition
-    );
-  };
-
-  // const filterByStops = (item) => number(item.stops);
-  const filterByStops = item => condition(item.stops);
-  return dataSorted.filter(filterByStops);
-};
 
 class App extends React.Component {
   // static defaultProps = {
@@ -55,6 +29,9 @@ class App extends React.Component {
     };
   }
 
+  noStops = () => {
+    return this.state.noStops;
+  };
   // state = {
   //   all: true,
   //   noStops: false,
@@ -66,14 +43,14 @@ class App extends React.Component {
 
 
   // this.setState({ isShown: !this.state.isShown });
-
-  toggle(event) {
-    const name = event.target.name;
-    this.setState({
-      all: !this.state.all,
-      noStops: !this.state.noStops,
-    });
-  }
+  //
+  // toggle(event) {
+  //   const name = event.target.name;
+  //   this.setState({
+  //     all: !this.state.all,
+  //     noStops: !this.state.noStops,
+  //   });
+  // }
 
   handleChange = (e) => {
     const name = e.target.name;
@@ -215,12 +192,74 @@ class App extends React.Component {
           <br />
           {checkboxThreeStops}
         </div>
-        <Tickets data={dataFiltred()} />
-        {/* <Tickets data={<FiltredData />} /> */}
+        <Tickets data={dataFiltred(this.state.noStops, this.state.oneStops, this.state.twoStops, this.state.threeStops)} />
+        <hr />
+         {/*<Tickets data={<DataFiltred />} />*/}
       </div>
     );
   }
 }
+
+const dataFiltred = (stateNoStops, stateOneStops, stateTwoStops, stateThreeStops) => {
+// class DataFiltred extends React.Component {
+  // const isAll = this.state.all;
+  const isNoStops = stateNoStops;
+  const isOneStops = stateOneStops;
+  const isTwoStops = stateTwoStops;
+  const isThreeStops = stateThreeStops;
+
+  const noStops = isNoStops ? 0 : false;
+  const oneStops = isOneStops ? 1 : false;
+  const twoStops = isTwoStops ? 2 : false;
+  const threeStops = isThreeStops ? 3 : false;
+
+
+  const numberStops = [noStops, oneStops, twoStops, threeStops];
+
+  const condition = (obj) => {
+    let result = obj === numberStops[0];
+    // const separator = '||';
+    for (let i = 1; i < numberStops.length; i += 1) {
+      result += obj === numberStops[i];
+    }
+    return result;
+  };
+
+  const filterByStops = item => condition(item.stops);
+  return dataSorted.filter(filterByStops);
+}
+
+
+// class DataFiltred extends React.Component {
+//   render() {
+//     const isNoStops = true;
+//     const isOneStops = false;
+//     const isTwoStops = true;
+//     const isThreeStops = true;
+//
+//     const noStops = 0;
+//     const oneStops = isOneStops ? 1 : false;
+//     const twoStops = isTwoStops ? 2 : false;
+//     const threeStops = isThreeStops ? 3 : false;
+//
+//     const numberStops = [noStops, oneStops, twoStops, threeStops];
+//
+//     const condition = (obj) => {
+//       let result = obj === numberStops[0];
+//       const separator = '||';
+//       for (let i = 1; i < numberStops.length; i += 1) {
+//         result += obj === numberStops[i];
+//         // console.log('result', result);
+//         // console.log('numberStops length', numberStops.length);
+//       }
+//       return result;
+//     };
+//     const filterByStops = item => condition(item.stops);
+//     return (
+//       dataSorted.filter(filterByStops)
+//     );
+//   }
+// }
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
