@@ -21,22 +21,6 @@ const flightDetail = (item, value) => {
   );
 };
 
-// [item.stops === thi]
-
-// class FilterOptions extends React.Component {
-//   render() {
-//     return {this.props.items.map(number => <Item value={number} />)};
-//   }
-// }
-//
-// class Item extends React.Component {
-//   render() {
-//     return item.stops === {this.props.value};
-//   }
-// }
-
-// {data.filter(item => {FilterOptions items={[1]}}).map(item => <div key={uniqueId()}>{flightDetail(item, 'departure')}</div>)}
-
 class Tickets extends React.Component {
   render() {
     const { data } = this.props;
