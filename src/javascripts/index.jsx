@@ -12,9 +12,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      all: true,
-      noStops: false,
-      oneStops: false,
+      all: false,
+      noStops: true,
+      oneStops: true,
       twoStops: false,
       threeStops: false,
       testNumber: 1000,
