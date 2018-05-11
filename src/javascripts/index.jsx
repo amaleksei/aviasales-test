@@ -77,8 +77,8 @@ class App extends React.Component {
         <div className="header__logo">
           <img src="./assets/images/logo.svg" alt="header__logo"/>
         </div>
-        <div className="FilterData">
-          <h1>Количество пересадок</h1>
+        <div className="filter">
+          <div className="filter__header">Количество пересадок</div>
           {checkboxisAll}
           <br />
           {checkboxNoStops}
