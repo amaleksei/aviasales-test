@@ -53,15 +53,6 @@ class FlightDetail extends React.Component {
   }
 }
 
-class Tickets extends React.Component {
-  render() {
-    const { data } = this.props;
-    return (
-      data.map(item => <div className="tickets" key={uniqueId()}>{<Ticket itemData={item} />}</div>)
-    );
-  }
-}
-
 class Ticket extends React.Component {
   render() {
     const itemData = this.props.itemData;
@@ -77,6 +68,15 @@ class TicketCard extends React.Component {
   render() {
     let items = React.Children.map(this.props.children, child => child)
     return items;
+  }
+}
+
+class Tickets extends React.Component {
+  render() {
+    const { data } = this.props;
+    return (
+      data.map(item => <div className="tickets" key={uniqueId()}>{<Ticket itemData={item} />}</div>)
+    );
   }
 }
 
