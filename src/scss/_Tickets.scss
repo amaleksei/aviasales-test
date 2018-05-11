@@ -3,3 +3,44 @@
 .buy-button__text, .buy-button__price {
   font-size: $ticket__price-font;
 }
+
+.buy-button__text {
+  font-weight: $font-semibold;
+}
+
+.buy-button__price {
+  font-weight: $font-regular;
+}
+
+
+
+.ticket__airline-logo {
+  img {
+    width: 11.71875vw;
+    height: 3.41796875vw;
+  }
+}
+
+
+
+.ticket__time {
+  font-size: $ticket__time-font;
+}
+
+.ticket__city, .ticket__date {
+  font-size: $ticket__city-font;
+}
+
+.ticket__city {
+  font-weight: $font-semibold;
+}
+
+.ticket__date {
+  font-weight: $font-regular;
+}
+
+
+
+.ticket__label-stops {
+  font-size: $ticket__label-stops-font;
+}
