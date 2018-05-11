@@ -74,9 +74,9 @@ class Button extends React.Component {
   render() {
     const price = this.props.price;
     return (
-      <button className="ticket__price">
-        <p>Купить</p>
-        <p>за {price} Р</p>
+      <button className="ticket__button buy-button">
+        <p className="buy-button__text">Купить</p>
+        <p className="buy-button__price">за {price} Р</p>
       </button>
     );
   }

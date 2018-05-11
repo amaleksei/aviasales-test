@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { uniqueId } from 'lodash';
-// import headerLogo from './../assets/images/logo.svg';
 
 import dataJSON from './tickets.json';
 import Tickets from './tickets/Tickets.jsx';
@@ -67,15 +66,15 @@ class App extends React.Component {
   render() {
     const isChecked = this.state.all ? 'checked' : 'unchecked';
     const stopsStates = [this.state.noStops, this.state.oneStops, this.state.twoStops, this.state.threeStops];
-    const checkboxisAll = (<span><input name="all" type="checkbox" onChange={this.handleChange.bind(this)} onClick={this.isAllSelec.bind(this)} checked={this.state.all} /><label>Все {this.state.all ? 'ON' : 'OFF'}</label></span>);
-    const checkboxNoStops = (<span><input name="noStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.noStops} /><label>Без пересадок {this.state.noStops ? 'ON' : 'OFF'}</label></span>);
-    const checkboxOneStops = (<span><input name="oneStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.oneStops} /><label>1 пересадка {this.state.oneStops ? 'ON' : 'OFF'}</label></span>);
-    const checkboxTwoStops = (<span><input name="twoStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.twoStops} /><label>2 пересадки {this.state.twoStops ? 'ON' : 'OFF'}</label></span>);
-    const checkboxThreeStops = (<span><input name="threeStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.threeStops} /><label>3 пересадки {this.state.threeStops ? 'ON' : 'OFF'}</label></span>);
+    const checkboxisAll = (<span><input name="all" type="checkbox" onChange={this.handleChange.bind(this)} onClick={this.isAllSelec.bind(this)} checked={this.state.all} /><label className="checkboxes-list__label">Все {this.state.all ? 'ON' : 'OFF'}</label></span>);
+    const checkboxNoStops = (<span><input name="noStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.noStops} /><label className="checkboxes-list__label">Без пересадок {this.state.noStops ? 'ON' : 'OFF'}</label></span>);
+    const checkboxOneStops = (<span><input name="oneStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.oneStops} /><label className="checkboxes-list__label">1 пересадка {this.state.oneStops ? 'ON' : 'OFF'}</label></span>);
+    const checkboxTwoStops = (<span><input name="twoStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.twoStops} /><label className="checkboxes-list__label">2 пересадки {this.state.twoStops ? 'ON' : 'OFF'}</label></span>);
+    const checkboxThreeStops = (<span><input name="threeStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.threeStops} /><label className="checkboxes-list__label">3 пересадки {this.state.threeStops ? 'ON' : 'OFF'}</label></span>);
     return (
       <div>
         <div className="header__logo">
-          <img src="./assets/images/logo.svg" alt="header__logo"/>
+          <img src="/assets/images/logo.svg" alt="header__logo"/>
         </div>
         <div className="filter">
           <div className="filter__header">Количество пересадок</div>
