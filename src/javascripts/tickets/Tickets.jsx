@@ -8,17 +8,17 @@ class FlightDetail extends React.Component {
       if (value === 'departure') {
         return [
           <div key={uniqueId()}>
-            <h2 className="flight-detail__time">{item.departure_time}</h2>
-            <span className="flight-detail__city">{item.origin}, {item.origin_name}</span>
-            <p className="flight-detail__date">{item.departure_date}</p>
+            <h2 className="ticket__time">{item.departure_time}</h2>
+            <span className="ticket__city">{item.origin}, {item.origin_name}</span>
+            <p className="ticket__date">{item.departure_date}</p>
           </div>,
         ];
       }
       return [
         <div key={uniqueId()}>
-          <h2 className="flight-detail__time" >{item.arrival_time}</h2>
-          <span className="flight-detail__city">{item.destination}, {item.destination_name}</span>
-          <p className="flight-detail__date">{item.arrival_date}</p>
+          <h2 className="ticket__time" >{item.arrival_time}</h2>
+          <span className="ticket__city">{item.destination_name}, {item.destination}</span>
+          <p className="ticket__date">{item.arrival_date}</p>
         </div>,
       ];
     };
@@ -39,16 +39,40 @@ class FlightDetail extends React.Component {
       return result;
     };
 
-    const segment = <div className="flight-detail__segment">
-      <div className="flight-detail__label-stops">{labelStops(item.stops)}</div>
-      <div className="flight-detail__path-line">{}</div>
+    const segment = <div className="ticket__segment">
+      <div className="ticket__label-stops">{labelStops(item.stops)}</div>
+      <div className="ticket__path-line">{}</div>
     </div>;
     return (
-      <div className="flight-detail">
+      <div className="ticket__content">
         {detailsPlace('departure')}
         {segment}
         {detailsPlace()}
       </div>
+    );
+  }
+}
+
+class TicketBuy extends React.Component {
+  render() {
+    const item = this.props.item;
+    return (
+      <div className="ticket__buy">
+      <div className="ticket__airline-logo"><img src={GetAirlineLogo(item.carrier)} alt={item.carrier}/></div>
+      </div>
+    );
+  }
+}
+
+const GetAirlineLogo = (carrier) => {
+  const srcLogo = `https://pics.avs.io/120/35/${carrier}@2x.png`;
+  return srcLogo;
+};
+
+class Button extends React.Component {
+  render() {
+    return (
+      <button>Click me!</button>
     );
   }
 }
@@ -58,6 +82,7 @@ class Ticket extends React.Component {
     const itemData = this.props.itemData;
     return (
       <TicketCard>
+        <TicketBuy item={itemData}/>
         <FlightDetail item={itemData} />
       </TicketCard>
     );
