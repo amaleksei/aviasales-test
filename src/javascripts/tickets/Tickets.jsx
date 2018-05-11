@@ -58,7 +58,8 @@ class TicketBuy extends React.Component {
     const item = this.props.item;
     return (
       <div className="ticket__buy">
-      <div className="ticket__airline-logo"><img src={GetAirlineLogo(item.carrier)} alt={item.carrier}/></div>
+        <div className="ticket__airline-logo"><img src={GetAirlineLogo(item.carrier)} alt={item.carrier}/></div>
+        <Button price={item.price} />
       </div>
     );
   }
@@ -71,8 +72,12 @@ const GetAirlineLogo = (carrier) => {
 
 class Button extends React.Component {
   render() {
+    const price = this.props.price;
     return (
-      <button>Click me!</button>
+      <button className="ticket__price">
+        <p>Купить</p>
+        <p>за {price} Р</p>
+      </button>
     );
   }
 }
