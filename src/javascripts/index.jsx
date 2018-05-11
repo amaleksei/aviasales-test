@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { uniqueId } from 'lodash';
+// import headerLogo from './../assets/images/logo.svg';
 
 import dataJSON from './tickets.json';
 import Tickets from './tickets/Tickets.jsx';
@@ -73,8 +74,8 @@ class App extends React.Component {
     const checkboxThreeStops = (<span><input name="threeStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.threeStops} /><label>3 пересадки {this.state.threeStops ? 'ON' : 'OFF'}</label></span>);
     return (
       <div>
-        <div className="hello">
-          <span>Hello webpack!</span>
+        <div className="header__logo">
+          <img src="./assets/images/logo.svg" alt="header__logo"/>
         </div>
         <div className="FilterData">
           <h1>Количество пересадок</h1>

@@ -1,15 +1,19 @@
 // Font Family
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700');
 
-$font-family: 'IBM Plex Sans', sans-serif;
+$font-family: 'Open Sans', sans-serif;
 
 $font-regular: 400;
-$font-bold: 700;
+$font-semibold: 600;
 
 // Font Sizes
-$h1-font-size: 50px;
-$h2-font-size: 37px;
-$p-font-size: 16px;
+$ticket__time-font: 32px;
+$ticket__city-font: 12px;
+$ticket__label-stops-font: 10px;
+$ticket__price-font: 16px;
+$filter__header-font: 12px;
+$checkboxes-list__label-font: 13px;
+$checkboxes-list__extra-uncheck-other-font: 11px;
 
 //Font Colors
 $label-font-color: #b8b8b8;
