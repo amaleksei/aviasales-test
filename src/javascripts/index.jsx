@@ -86,8 +86,12 @@ class App extends React.Component {
         <div className="header__logo">
           <img src="/assets/images/logo.svg" alt="header__logo"/>
         </div>
-        <Filter {...parameters} />
-        <Tickets data={dataFiltred(...stopsStates)} />
+        <div className="container">
+          <Filter {...parameters} />
+          <div className="tickets">
+            <Tickets data={dataFiltred(...stopsStates)} />
+          </div>
+        </div>
       </div>
     );
   }

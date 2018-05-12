@@ -23,6 +23,12 @@ body {
   justify-content: center;
 }
 
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 .header__logo {
   width: 100vw;
   justify-content: center;

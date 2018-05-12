@@ -105,7 +105,7 @@ class Tickets extends React.Component {
   render() {
     const { data } = this.props;
     return (
-      data.map(item => <div className="tickets" key={uniqueId()}>{<Ticket itemData={item} />}</div>)
+      data.map(item => <div className="ticket" key={uniqueId()}>{<Ticket itemData={item} />}</div>)
     );
   }
 }

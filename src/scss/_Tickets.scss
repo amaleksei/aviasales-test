@@ -1,5 +1,21 @@
 @import '_typography';
 
+.tickets {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket {
+  width: 55.2734375vw;
+  height: 15.72265625vw;
+  background: #FFF;
+  box-shadow: 0 1px 4px 0 rgba(91,137,164,0.25);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.953125vw;
+}
+
 .buy-button__text, .buy-button__price {
   font-size: $ticket__price-font;
 }
