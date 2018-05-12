@@ -2,35 +2,53 @@ import React from 'react';
 import { uniqueId } from 'lodash';
 
 class Filter extends React.Component {
-  // state = { value: '' };
-  //
-  // handleChange = (e) => {
-  //   this.setState({ value: e.target.value });
-  // };
-  //
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   alert(`Your favorite flavor is: ${this.state.value}`);
-  // };
+  renderItem(item) {
+    const isOnClick = (item) => {
+      if (item.stops === 'all') {
+        const value = this.props.isAllSelec;
+        return value;
+      }
+      return null;
+    };
+
+    const controlParameters = {
+      onChange: this.props.handleChange,
+      onClick: isOnClick(item),
+    };
+
+    const result = <div key={uniqueId()}><span><input name={item.stops} {...controlParameters} checked={item.states} type="checkbox" /><label className="checkboxes-list__label">{item.name}</label></span></div>;
+    return result;
+  }
 
   render() {
-    const checkboxisAll = (<span><input name="all" type="checkbox" checked={this.props.isCheckedAll} onChange={this.props.isChangeAll} /><label>Все {this.props.isChecked}</label></span>);
-    const checkboxNoStops = (<span><input name="noStops" type="checkbox" /><label>Без пересадок</label></span>);
-    const checkboxOneStops = (<span><input name="oneStops" type="checkbox" /><label>1 пересадка</label></span>);
-    const checkboxTwoStops = (<span><input name="twoStops" type="checkbox" /><label>2 пересадки</label></span>);
-    const checkboxThreeStops = (<span><input name="threeStops" type="checkbox" /><label>3 пересадки</label></span>);
+    const data = [{
+      states: this.props.all,
+      stops: "all",
+      name: "Все",
+    },{
+      states: this.props.noStops,
+      stops: "noStops",
+      name: "Без пересадок",
+    }, {
+      states: this.props.oneStops,
+      stops: "oneStops",
+      name: "1 пересадка",
+    }, {
+      states: this.props.twoStops,
+      stops: "twoStops",
+      name: "2 пересадки",
+    }, {
+      states: this.props.threeStops,
+      stops: "threeStops",
+      name: "3 пересадки",
+    }];
+
+    const handleChange = this.props;
+    const isAllSelec = this.props;
     return (
-      <div className="FilterData">
-        <h1>Количество пересадок</h1>
-        {checkboxisAll}
-        <br />
-        {checkboxNoStops}
-        <br />
-        {checkboxOneStops}
-        <br />
-        {checkboxTwoStops}
-        <br />
-        {checkboxThreeStops}
+      <div className="filter">
+        <div className="filter__header">Количество пересадок</div>
+        {data.map((item) => this.renderItem(item))}
       </div>
     );
   }

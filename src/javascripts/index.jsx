@@ -4,7 +4,7 @@ import { uniqueId } from 'lodash';
 
 import dataJSON from './tickets.json';
 import Tickets from './tickets/Tickets.jsx';
-// import Filter from './Filter.jsx';
+import Filter from './Filter.jsx';
 
 const dataSorted = dataJSON.tickets.sort((a, b) => a.price - b.price);
 
@@ -62,32 +62,31 @@ class App extends React.Component {
       twoStops: e.target.checked,
       threeStops: e.target.checked,
     });
-  }
+  };
   render() {
-    const isChecked = this.state.all ? 'checked' : 'unchecked';
-    const stopsStates = [this.state.noStops, this.state.oneStops, this.state.twoStops, this.state.threeStops];
-    const checkboxisAll = (<span><input name="all" type="checkbox" onChange={this.handleChange.bind(this)} onClick={this.isAllSelec.bind(this)} checked={this.state.all} /><label className="checkboxes-list__label">Все {this.state.all ? 'ON' : 'OFF'}</label></span>);
-    const checkboxNoStops = (<span><input name="noStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.noStops} /><label className="checkboxes-list__label">Без пересадок {this.state.noStops ? 'ON' : 'OFF'}</label></span>);
-    const checkboxOneStops = (<span><input name="oneStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.oneStops} /><label className="checkboxes-list__label">1 пересадка {this.state.oneStops ? 'ON' : 'OFF'}</label></span>);
-    const checkboxTwoStops = (<span><input name="twoStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.twoStops} /><label className="checkboxes-list__label">2 пересадки {this.state.twoStops ? 'ON' : 'OFF'}</label></span>);
-    const checkboxThreeStops = (<span><input name="threeStops" type="checkbox" onChange={this.handleChange.bind(this)} checked={this.state.threeStops} /><label className="checkboxes-list__label">3 пересадки {this.state.threeStops ? 'ON' : 'OFF'}</label></span>);
+    const stopsStates = [
+      this.state.noStops,
+      this.state.oneStops,
+      this.state.twoStops,
+      this.state.threeStops,
+    ];
+    const stopsStatesAll = [this.state.all, stopsStates];
+    const parameters = {
+      handleChange: this.handleChange.bind(this),
+      isAllSelec: this.isAllSelec.bind(this),
+      state: stopsStatesAll,
+      all: this.state.all,
+      noStops: this.state.noStops,
+      oneStops: this.state.oneStops,
+      twoStops: this.state.twoStops,
+      threeStops: this.state.threeStops,
+    };
     return (
       <div>
         <div className="header__logo">
           <img src="/assets/images/logo.svg" alt="header__logo"/>
         </div>
-        <div className="filter">
-          <div className="filter__header">Количество пересадок</div>
-          {checkboxisAll}
-          <br />
-          {checkboxNoStops}
-          <br />
-          {checkboxOneStops}
-          <br />
-          {checkboxTwoStops}
-          <br />
-          {checkboxThreeStops}
-        </div>
+        <Filter {...parameters} />
         <Tickets data={dataFiltred(...stopsStates)} />
       </div>
     );
@@ -119,7 +118,7 @@ const dataFiltred = (stateNoStops, stateOneStops, stateTwoStops, stateThreeStops
 
   const filterByStops = item => condition(item.stops);
   return dataSorted.filter(filterByStops);
-}
+};
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
