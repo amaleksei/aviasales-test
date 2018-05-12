@@ -42,12 +42,13 @@
   padding-top: 2.44140625vw;
   padding-left: 1.953125vw;
   padding-right: 1.953125vw;
-  //background: #ECEFF1;
   border-right: 1px solid #ECEFF1;
 }
 
 .ticket__airline-logo {
   margin-bottom: 1.953125vw;
+  display: flex;
+  justify-content: center;
   img {
     width: 11.71875vw;
     height: 3.41796875vw;
