@@ -1,9 +1,45 @@
 @import "_typography";
 
-.filter__header {
-  font-size: $filter__header-font;
+.filter {
+  width: 22.65625vw;
+  height: 22.55859375vw;
+  background-color: #FFF;
+  box-shadow: 0 1px 4px 0 rgba(91,137,164,0.25);
+  border-radius: 5px;
+  margin-left: 10.05859375vw;
+  margin-top: 5.6640625vw;
 }
 
-.checkboxes-list__label {
+.filter__header {
+  font-size: $filter__header-font;
+  color: $filter__header-color;
+  font-weight: $font-semibold;
+  opacity: 0.1;
+  line-height: 19px;
+  letter-spacing: 0.5px;
+  padding-top: 1.46484375vw;
+  padding-left: 1.46484375vw;
+}
+
+.checkbox-item__checkbox {
+  padding-left: 1.46484375vw;
+  padding-right: 1.46484375vw;
+
+  .checkbox-item__checkbox-field {
+    background-color: #FFF;
+    border: 1px solid #D2D5D6;
+    border-radius: 3px;
+    width: 19px;
+    height: 19px;
+  }
+
+  .checkbox-item__checkbox-field:checked {
+    background: #F2FCFF;
+    border: 1px solid #3E9CE8;
+    border-radius: 3px;
+  }
+}
+
+.checkbox-item__label {
   font-size: $checkboxes-list__label-font;
 }

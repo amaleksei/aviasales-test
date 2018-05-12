@@ -16,7 +16,7 @@ class Filter extends React.Component {
       onClick: isOnClick(item),
     };
 
-    const result = <div key={uniqueId()}><span><input name={item.stops} {...controlParameters} checked={item.states} type="checkbox" /><label className="checkboxes-list__label">{item.name}</label></span></div>;
+    const result = <div key={uniqueId()} className="filter__checkbox-item checkbox-item"><span className="checkbox-item__checkbox"><input name={item.stops} className="checkbox-item__checkbox-field" {...controlParameters} checked={item.states} type="checkbox" /><label className="checkbox-item__label">{item.name}</label></span></div>;
     return result;
   }
 
@@ -48,7 +48,9 @@ class Filter extends React.Component {
     return (
       <div className="filter">
         <div className="filter__header">Количество пересадок</div>
-        {data.map((item) => this.renderItem(item))}
+        <div className="filter__content">
+          {data.map((item) => this.renderItem(item))}
+        </div>
       </div>
     );
   }
