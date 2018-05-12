@@ -7,7 +7,7 @@ class FlightDetail extends React.Component {
     const detailsPlace = (value) => {
       if (value === 'departure') {
         return [
-          <div key={uniqueId()}>
+          <div key={uniqueId()} className="ticket__detail-left">
             <h2 className="ticket__time">{item.departure_time}</h2>
             <span className="ticket__city">{item.origin}, {item.origin_name}</span>
             <p className="ticket__date">{item.departure_date}</p>
@@ -15,7 +15,7 @@ class FlightDetail extends React.Component {
         ];
       }
       return [
-        <div key={uniqueId()}>
+        <div key={uniqueId()} className="ticket__detail-right">
           <h2 className="ticket__time" >{item.arrival_time}</h2>
           <span className="ticket__city">{item.destination_name}, {item.destination}</span>
           <p className="ticket__date">{item.arrival_date}</p>

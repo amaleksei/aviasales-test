@@ -56,26 +56,50 @@
   }
 }
 
+.ticket__content {
+  display: flex;
+  flex-direction: row;
+  padding: 2.44140625vw;
+  justify-content: space-between;
+  width: 35.546875vw;
+}
 
+.ticket__detail-left {
+  margin: 0;
+}
+
+.ticket__detail-right {
+  text-align: right;
+}
 
 .ticket__time {
+  font-weight: $font-regular;
   font-size: $ticket__time-font;
+  color: #4A4A4A;
+  margin-top: 0;
+  margin-bottom: 0.9765625vw;
 }
 
 .ticket__city, .ticket__date {
   font-size: $ticket__city-font;
+  line-height: 18px;
+  margin: 0;
 }
 
 .ticket__city {
   font-weight: $font-semibold;
+  color: #4A4A4A;
 }
 
 .ticket__date {
   font-weight: $font-regular;
+  color: #8B9497;
 }
 
 
 
 .ticket__label-stops {
   font-size: $ticket__label-stops-font;
+  color: #8B9497;
+  line-height: 12.1px;
 }
