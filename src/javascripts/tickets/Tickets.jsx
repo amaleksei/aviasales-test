@@ -41,7 +41,10 @@ class FlightDetail extends React.Component {
 
     const segment = <div className="ticket__segment">
       <div className="ticket__label-stops">{labelStops(item.stops)}</div>
-      <div className="ticket__path-line">{}</div>
+      <div className="ticket__segment-route">
+        <div className="ticket__path-line">{}</div>
+        <span className="ticket__airplane-icon"><img src="/assets/images/airplane-icon.svg" alt="airplane-icon"/></span>
+      </div>
     </div>;
     return (
       <div className="ticket__content">

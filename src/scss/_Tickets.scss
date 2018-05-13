@@ -66,6 +66,8 @@
 
 .ticket__detail-left {
   margin: 0;
+  z-index: 1;
+  clear: right;
 }
 
 .ticket__detail-right {
@@ -96,10 +98,45 @@
   color: #8B9497;
 }
 
+.ticket__segment {
+  display: flex;
+  //align-content: center;
+  //align-items: flex-start;
+  flex-direction: column;
+  top: 10px;
+  z-index: 999;
+  //left: -10px;
+}
 
+.ticket__path-line {
+  display: absolute;
+  height: 1px;
+  background: #D2D5D6;
+  width: 9.375vw;
+  margin-right: 0.09765625vw;
+  //left: calc(100% - 45px);
+  //left: calc(100% - 9.765625vw);
+}
+
+.ticket__segment-route {
+  display: flex;
+  flex-direction: row;
+  width: 10.7421875vw;
+  height: 1.3671875vw;
+  align-items: center;
+}
 
 .ticket__label-stops {
   font-size: $ticket__label-stops-font;
   color: #8B9497;
   line-height: 12.1px;
+  margin-bottom: 0.5859375vw;
+}
+
+.ticket__airplane-icon {
+  height: 1.3671875vw;
+  img {
+    width: 1.26953125vw;
+    height: 1.3671875vw;
+  }
 }
