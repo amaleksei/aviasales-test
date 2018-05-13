@@ -5,6 +5,7 @@
 
 html {
   box-sizing: border-box;
+  @include fluid-type(font-size, $minScreen, $maxScreen, $minFont, $maxFont);
 }
 *, *:before, *:after {
   box-sizing: inherit;

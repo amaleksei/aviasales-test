@@ -7,13 +7,18 @@ $font-regular: 400;
 $font-semibold: 600;
 
 // Font Sizes
-$ticket__time-font: 32px;
-$ticket__city-font: 12px;
-$ticket__label-stops-font: 10px;
-$ticket__price-font: 16px;
-$filter__header-font: 12px;
-$checkboxes-list__label-font: 13px;
-$checkboxes-list__extra-uncheck-other-font: 11px;
+$ticket__time-font: 2rem;
+$ticket__city-font: 0.75rem;
+$ticket__label-stops-font: 0.625rem;
+$ticket__price-font: 1rem;
+$filter__header-font: 0.75rem;
+$checkboxes-list__label-font: 0.8125rem;
+$checkboxes-list__extra-uncheck-other-font: 0.6875rem;
+
+$minScreen: 48rem;
+$maxScreen: 160rem;
+$minFont: 0.8125rem;
+$maxFont: 1.6rem;
 
 //Font Colors
 $label-font-color: #b8b8b8;
@@ -21,3 +26,28 @@ $h1-font-color: #a0a0a0;
 $p-font-color: #b8b8b8;
 
 $filter__header-color: #4A4A4A;
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+
+    @media screen and (min-width: $min-vw) {
+      @each $property in $properties {
+        #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+    }
+
+    @media screen and (min-width: $max-vw) {
+      @each $property in $properties {
+        #{$property}: $max-value;
+      }
+    }
+  }
+}
