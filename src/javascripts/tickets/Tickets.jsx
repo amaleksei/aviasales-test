@@ -7,7 +7,7 @@ class FlightDetail extends React.Component {
     const detailsPlace = (value) => {
       if (value === 'departure') {
         return [
-          <div key={uniqueId()} className="ticket__detail-left">
+          <div key={uniqueId()} className=" ticket__detail">
             <h2 className="ticket__time">{item.departure_time}</h2>
             <span className="ticket__city">{item.origin}, {item.origin_name}</span>
             <p className="ticket__date">{item.departure_date}</p>
@@ -15,7 +15,7 @@ class FlightDetail extends React.Component {
         ];
       }
       return [
-        <div key={uniqueId()} className="ticket__detail-right">
+        <div key={uniqueId()} className="ticket__detail ticket__detail--right">
           <h2 className="ticket__time" >{item.arrival_time}</h2>
           <span className="ticket__city">{item.destination_name}, {item.destination}</span>
           <p className="ticket__date">{item.arrival_date}</p>
@@ -41,9 +41,9 @@ class FlightDetail extends React.Component {
 
     const segment = <div className="ticket__segment">
       <div className="ticket__label-stops">{labelStops(item.stops)}</div>
-      <div className="ticket__segment-route">
-        <div className="ticket__path-line">{}</div>
-        <span className="ticket__airplane-icon"><img src="/assets/images/airplane-icon.svg" alt="airplane-icon"/></span>
+      <div className="ticket__segment-route ticket__segment-route--right-segment">
+        <div className="ticket__path-line"></div>
+        <div className="ticket__airplane-icon"><img src="/assets/images/airplane-icon.svg" alt="airplane-icon"/></div>
       </div>
     </div>;
     return (

@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 1.953125vw;
+  position: relative;
 }
 
 .ticket__button {
@@ -64,13 +65,12 @@
   width: 35.546875vw;
 }
 
-.ticket__detail-left {
+.ticket__detail {
   margin: 0;
   z-index: 1;
-  clear: right;
 }
 
-.ticket__detail-right {
+.ticket__detail--right {
   text-align: right;
 }
 
@@ -100,26 +100,31 @@
 
 .ticket__segment {
   display: flex;
+  position: relative;
   //align-content: center;
   //align-items: flex-start;
   flex-direction: column;
-  top: 10px;
+  //top: 10px;
   z-index: 999;
-  //left: -10px;
 }
 
 .ticket__path-line {
-  display: absolute;
   height: 1px;
   background: #D2D5D6;
-  width: 9.375vw;
   margin-right: 0.09765625vw;
-  //left: calc(100% - 45px);
-  //left: calc(100% - 9.765625vw);
+  z-index: 9;
+  width: 9.375vw;
+}
+
+.ticket__segment-route--right-segment {
+  position: absolute;
+  top: 1.7578125vw;
+  left: -1.46484375vw;
 }
 
 .ticket__segment-route {
   display: flex;
+  justify-content: flex-start;
   flex-direction: row;
   width: 10.7421875vw;
   height: 1.3671875vw;
@@ -130,11 +135,12 @@
   font-size: $ticket__label-stops-font;
   color: #8B9497;
   line-height: 12.1px;
-  margin-bottom: 0.5859375vw;
+  padding-left: 0.1953125vw;
 }
 
 .ticket__airplane-icon {
   height: 1.3671875vw;
+  width: inherit;
   img {
     width: 1.26953125vw;
     height: 1.3671875vw;
