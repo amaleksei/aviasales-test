@@ -1,4 +1,5 @@
 @import '_typography';
+@import '_variable';
 
 .tickets {
   display: flex;
@@ -9,8 +10,8 @@
   width: 55.2734375vw;
   height: 15.72265625vw;
   background: #FFF;
-  box-shadow: 0 1px 4px 0 rgba(91,137,164,0.25);
-  border-radius: 5px;
+  box-shadow: 0 0.09765625vw 0.390625vw 0 rgba(91,137,164,0.25);
+  border-radius: $border-radius;
   display: flex;
   flex-direction: row;
   margin-bottom: 1.953125vw;
@@ -21,8 +22,8 @@
   width: 15.625vw;
   height: 5.46875vw;
   background: #FF6D00;
-  box-shadow: 0 1px 0 0 #D64D08, 0 2px 1px 0 rgba(0,0,0,0.10);
-  border-radius: 5px;
+  box-shadow: 0 0.09765625vw 0 0 #D64D08, 0 0.1953125vw 0.09765625vw 0 rgba(0,0,0,0.10);
+  border-radius: $border-radius;
 }
 
 .buy-button__text, .buy-button__price {
@@ -44,7 +45,7 @@
   padding-top: 2.44140625vw;
   padding-left: 1.953125vw;
   padding-right: 1.953125vw;
-  border-right: 1px solid #ECEFF1;
+  border-right: 0.09765625vw solid #ECEFF1;
 }
 
 .ticket__airline-logo {
@@ -101,15 +102,14 @@
 .ticket__segment {
   display: flex;
   position: relative;
-  //align-content: center;
-  //align-items: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
-  //top: 10px;
   z-index: 999;
 }
 
 .ticket__path-line {
-  height: 1px;
+  height: 0.09765625vw;
   background: #D2D5D6;
   margin-right: 0.09765625vw;
   z-index: 9;
@@ -124,7 +124,7 @@
 
 .ticket__segment-route {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   flex-direction: row;
   width: 10.7421875vw;
   height: 1.3671875vw;
