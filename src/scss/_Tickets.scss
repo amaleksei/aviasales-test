@@ -84,7 +84,7 @@
 
 .ticket__city, .ticket__date {
   font-size: $ticket__city-font;
-  line-height: 18px;
+  line-height: 1.7578125vw;
   margin: 0;
 }
 
@@ -134,7 +134,7 @@
 .ticket__label-stops {
   font-size: $ticket__label-stops-font;
   color: #8B9497;
-  line-height: 12.1px;
+  line-height: 1.181640625vw;
   padding-left: 0.1953125vw;
 }
 
