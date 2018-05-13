@@ -7,10 +7,6 @@ $font-regular: 400;
 $font-semibold: 600;
 
 // Font Sizes
-:root {
-  font-size: 16px;
-}
-
 $ticket__time-font: 2rem;
 $ticket__city-font: 0.75rem;
 $ticket__label-stops-font: 0.625rem;
@@ -20,8 +16,8 @@ $checkboxes-list__label-font: 0.8125rem;
 $checkboxes-list__extra-uncheck-other-font: 0.6875rem;
 
 $minScreen: 48rem;
-$maxScreen: 256rem;
-$minFont: 1rem;
+$maxScreen: 160rem;
+$minFont: 0.8125rem;
 $maxFont: 1.6rem;
 
 //Font Colors
