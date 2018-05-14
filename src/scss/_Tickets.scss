@@ -27,6 +27,11 @@
   cursor: pointer;
 }
 
+.ticket__button:hover {
+  background-color: #FF8124;
+  box-shadow: 0 0.09765625vw 0 0 #F7661D, 0 0.09765625vw 0.48828125vw 0 rgba(0,0,0,0.25);
+}
+
 .buy-button__text, .buy-button__price {
   font-size: $ticket__price-font;
   color: #FFF;
