@@ -21,6 +21,19 @@
   padding-left: 1.46484375vw;
 }
 
+.filter__checkbox-item {
+  padding-top: 0.5859375vw;
+  padding-bottom: 0.48828125vw;
+}
+
+.filter__checkbox-item:last-child {
+  margin-bottom: 0;
+}
+
+.filter__checkbox-item:hover {
+  background-color: #F1FCFF;
+}
+
 .checkbox-item__checkbox {
   display: flex;
   align-items: center;
