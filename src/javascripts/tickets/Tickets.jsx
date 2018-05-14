@@ -26,7 +26,8 @@ class FlightDetail extends React.Component {
     const labelStops = (stops) => {
       let label;
       if (stops === 0) {
-        return;
+        label = '';
+        return label;
       } else if (stops === 1) {
         label = 'пересадка';
       } else if (stops > 1 && stops < 5) {
@@ -39,13 +40,14 @@ class FlightDetail extends React.Component {
       return result;
     };
 
-    const segment = <div className="ticket__segment">
-      <div className="ticket__label-stops">{labelStops(item.stops)}</div>
-      <div className="ticket__segment-route ticket__segment-route--right-segment">
-        <div className="ticket__path-line"></div>
-        <div className="ticket__airplane-icon"><img src="/assets/images/airplane-icon.svg" alt="airplane-icon"/></div>
-      </div>
-    </div>;
+    const segment = (
+      <div className="ticket__segment">
+        <div className="ticket__label-stops">{labelStops(item.stops)}</div>
+        <div className="ticket__segment-route ticket__segment-route--right-segment">
+          <div className="ticket__path-line" />
+          <div className="ticket__airplane-icon"><img src="/assets/images/airplane-icon.svg" alt="airplane-icon" /></div>
+        </div>
+      </div>);
     return (
       <div className="ticket__content">
         {detailsPlace('departure')}

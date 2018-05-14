@@ -68,7 +68,7 @@
   display: flex;
   flex-direction: row;
   padding: 2.44140625vw;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 35.546875vw;
 }
 
@@ -120,10 +120,13 @@
   margin-right: 0.09765625vw;
   z-index: 9;
   width: 9.375vw;
+  // width: 90vw;
+  position: absolute;
+  left: -15px;
 }
 
 .ticket__segment-route--right-segment {
-  position: absolute;
+  // position: absolute;
   top: 1.7578125vw;
   left: -1.46484375vw;
 }
@@ -145,8 +148,12 @@
 }
 
 .ticket__airplane-icon {
-  height: 1.3671875vw;
+  height: 1.26953125vw;
   width: inherit;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15px;
+
   img {
     width: 1.26953125vw;
     height: 1.3671875vw;
