@@ -8,7 +8,7 @@ class Filter extends React.Component {
         const value = this.props.isAllSelec;
         return value;
       }
-      return null;
+      return;
     };
 
     const controlParameters = {
@@ -16,7 +16,7 @@ class Filter extends React.Component {
       onClick: isOnClick(item),
     };
 
-    const result = <div key={uniqueId()} className="filter__checkbox-item checkbox-item"><span className="checkbox-item__checkbox"><input name={item.stops} className="checkbox-item__checkbox-field" {...controlParameters} checked={item.states} type="checkbox" /><label className="checkbox-item__label">{item.name}</label></span></div>;
+    const result = <div key={uniqueId()} className="filter__checkbox-item checkbox-item"><label className="checkbox-item__checkbox"><input name={item.stops} {...controlParameters} className="checkbox-item__checkbox-field" checked={item.states} type="checkbox" /><span /><span className="checkbox-item__label">{item.name}</span></label></div>;
     return result;
   }
 
@@ -47,9 +47,9 @@ class Filter extends React.Component {
     const isAllSelec = this.props;
     return (
       <div className="filter">
-        <div className="filter__header">Количество пересадок</div>
+        <div className="filter__header">{'Количество пересадок'.toUpperCase()}</div>
         <div className="filter__content">
-          {data.map((item) => this.renderItem(item))}
+          {data.map(item => this.renderItem(item))}
         </div>
       </div>
     );
