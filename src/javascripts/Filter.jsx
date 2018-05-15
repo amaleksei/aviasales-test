@@ -16,7 +16,28 @@ class Filter extends React.Component {
       onClick: isOnClick(item),
     };
 
-    const result = <div key={uniqueId()} className="filter__checkbox-item checkbox-item"><label className="checkbox-item__checkbox"><input name={item.stops} {...controlParameters} className="checkbox-item__checkbox-field" checked={item.states} type="checkbox" /><span /><span className="checkbox-item__label">{item.name}</span></label></div>;
+    const controlParametersShowOnly = {
+      onClick: this.props.onHandleChangeOnly,
+    };
+
+    const result = (
+      <div key={uniqueId()} className="filter__checkbox-item checkbox-item">
+        <label className="checkbox-item__checkbox">
+          <input name={item.stops} {...controlParameters} className="checkbox-item__checkbox-field" checked={item.states} type="checkbox" />
+          <span />
+          <span className="checkbox-item__label">
+            {item.name}
+          </span>
+        </label>
+        {item.stops === 'all' ? [null] : [
+          <span className="checkbox-item__show-only" key={uniqueId()}>
+            <button name={item.stops} {...controlParametersShowOnly} className="checkbox-item__show-only-button">
+              {this.props.buttonLabel.toUpperCase()}
+            </button>
+          </span>,
+        ]}
+      </div>
+    );
     return result;
   }
 
@@ -45,9 +66,12 @@ class Filter extends React.Component {
 
     const handleChange = this.props;
     const isAllSelec = this.props;
+    const onHandleChangeOnly = this.props;
+    const buttonLabel = this.props;
+    const headerName = this.props;
     return (
       <div className="filter">
-        <div className="filter__header">{'Количество пересадок'.toUpperCase()}</div>
+        <div className="filter__header">{this.props.headerName.toUpperCase()}</div>
         <div className="filter__content">
           {data.map(item => this.renderItem(item))}
         </div>

@@ -17,7 +17,6 @@ class App extends React.Component {
       oneStops: true,
       twoStops: false,
       threeStops: false,
-      testNumber: 1000,
     };
   }
 
@@ -37,11 +36,37 @@ class App extends React.Component {
     const AllStopsFilteredCountTrue = AllStops.filter(item => item === true).length;
     const isAllSelected = condition => (AllStopsFilteredCountTrue === 3 ? e.target.checked : false);
 
+    const isShowOnly = (name) => {
+      const states = ['all', 'noStops', 'oneStops', 'twoStops', 'threeStops'];
+      const statesFalseArray = states.filter(state => state !== name);
+      return statesFalseArray;
+    };
+
     this.setState({
       all: isAllSelected(),
       [name]: e.target.checked,
     });
   }
+
+  onHandleChangeOnly = (e) => {
+    const targetName = e.target.name;
+
+    const stateValue = (name) => {
+      if (targetName === name) {
+        return true;
+      }
+      return false;
+    };
+
+    this.setState({
+      all: false,
+      noStops: stateValue('noStops'),
+      oneStops: stateValue('oneStops'),
+      twoStops: stateValue('twoStops'),
+      threeStops: stateValue('threeStops'),
+      // [targetName]: true,
+    });
+  };
 
   isAllSelec = (e) => {
     const isAll = this.state.all;
@@ -74,6 +99,7 @@ class App extends React.Component {
     const parameters = {
       handleChange: this.handleChange.bind(this),
       isAllSelec: this.isAllSelec.bind(this),
+      onHandleChangeOnly: this.onHandleChangeOnly.bind(this),
       state: stopsStatesAll,
       all: this.state.all,
       noStops: this.state.noStops,
@@ -87,7 +113,7 @@ class App extends React.Component {
           <img src="/assets/images/logo.svg" alt="header__logo"/>
         </div>
         <div className="container">
-          <Filter {...parameters} />
+          <Filter {...parameters} buttonLabel="только" headerName="Количество пересадок" />
           <div className="tickets">
             <Tickets data={dataFiltred(...stopsStates)} />
           </div>
@@ -98,7 +124,6 @@ class App extends React.Component {
 }
 
 const dataFiltred = (stateNoStops, stateOneStops, stateTwoStops, stateThreeStops) => {
-  // const isAll = this.state.all;
   const isNoStops = stateNoStops;
   const isOneStops = stateOneStops;
   const isTwoStops = stateTwoStops;
