@@ -17,7 +17,6 @@ class App extends React.Component {
       oneStops: true,
       twoStops: false,
       threeStops: false,
-      showOnly: false,
     };
   }
 
@@ -50,19 +49,24 @@ class App extends React.Component {
   }
 
   onHandleChangeOnly = (e) => {
-    const name = e.target.name;
+    const targetName = e.target.name;
 
-    const stateValue = false;
+    const stateValue = (name) => {
+      if (targetName === name) {
+        return true;
+      }
+      return false;
+    };
 
     this.setState({
-      all: stateValue,
-      noStops: stateValue,
-      oneStops: stateValue,
-      twoStops: stateValue,
-      threeStops: stateValue,
-      [name]: true,
+      all: false,
+      noStops: stateValue('noStops'),
+      oneStops: stateValue('oneStops'),
+      twoStops: stateValue('twoStops'),
+      threeStops: stateValue('threeStops'),
+      // [targetName]: true,
     });
-  }
+  };
 
   isAllSelec = (e) => {
     const isAll = this.state.all;
@@ -109,7 +113,7 @@ class App extends React.Component {
           <img src="/assets/images/logo.svg" alt="header__logo"/>
         </div>
         <div className="container">
-          <Filter {...parameters} />
+          <Filter {...parameters} buttonLabel="только" headerName="Количество пересадок" />
           <div className="tickets">
             <Tickets data={dataFiltred(...stopsStates)} />
           </div>
@@ -120,7 +124,6 @@ class App extends React.Component {
 }
 
 const dataFiltred = (stateNoStops, stateOneStops, stateTwoStops, stateThreeStops) => {
-  // const isAll = this.state.all;
   const isNoStops = stateNoStops;
   const isOneStops = stateOneStops;
   const isTwoStops = stateTwoStops;

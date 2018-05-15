@@ -32,7 +32,7 @@ class Filter extends React.Component {
         {item.stops === 'all' ? [null] : [
           <span className="checkbox-item__show-only" key={uniqueId()}>
             <button name={item.stops} {...controlParametersShowOnly} className="checkbox-item__show-only-button">
-              {'только'.toUpperCase()}
+              {this.props.buttonLabel.toUpperCase()}
             </button>
           </span>,
         ]}
@@ -66,11 +66,12 @@ class Filter extends React.Component {
 
     const handleChange = this.props;
     const isAllSelec = this.props;
-    // const isShowOnly = this.props;
     const onHandleChangeOnly = this.props;
+    const buttonLabel = this.props;
+    const headerName = this.props;
     return (
       <div className="filter">
-        <div className="filter__header">{'Количество пересадок'.toUpperCase()}</div>
+        <div className="filter__header">{this.props.headerName.toUpperCase()}</div>
         <div className="filter__content">
           {data.map(item => this.renderItem(item))}
         </div>
