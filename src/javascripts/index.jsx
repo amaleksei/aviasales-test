@@ -50,22 +50,17 @@ class App extends React.Component {
   }
 
   onHandleChangeOnly = (e) => {
-    const nameTarget = e.target.name;
+    const name = e.target.name;
 
-    const isClicked = (name) => {
-      if (name) {
-        return true;
-      }
-      return false;
-    };
+    const stateValue = false;
 
     this.setState({
-      all: false,
-      noStops: isClicked(),
-      oneStops: isClicked(),
-      twoStops: isClicked(),
-      threeStops: isClicked(),
-      [nameTarget]: true,
+      all: stateValue,
+      noStops: stateValue,
+      oneStops: stateValue,
+      twoStops: stateValue,
+      threeStops: stateValue,
+      [name]: true,
     });
   }
 
