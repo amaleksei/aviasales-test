@@ -16,7 +16,20 @@ class Filter extends React.Component {
       onClick: isOnClick(item),
     };
 
-    const result = <div key={uniqueId()} className="filter__checkbox-item checkbox-item"><label className="checkbox-item__checkbox"><input name={item.stops} {...controlParameters} className="checkbox-item__checkbox-field" checked={item.states} type="checkbox" /><span /><span className="checkbox-item__label">{item.name}</span></label></div>;
+    const result = (
+      <div key={uniqueId()} className="filter__checkbox-item checkbox-item">
+        <label className="checkbox-item__checkbox">
+          <input name={item.stops} {...controlParameters} className="checkbox-item__checkbox-field" checked={item.states} type="checkbox" />
+          <span />
+          <span className="checkbox-item__label">
+            {item.name}
+          </span>
+        </label>
+        <span className="checkbox-item__show-only">
+          {'только'.toUpperCase()}
+        </span>
+      </div>
+    );
     return result;
   }
 

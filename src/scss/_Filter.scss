@@ -26,6 +26,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  justify-content: space-between;
 }
 
 .filter__checkbox-item:hover {
@@ -84,4 +85,13 @@
   display: flex;
   align-items: center;
   padding-left: 0.9765625vw;
+}
+
+.checkbox-item__show-only {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: $font-regular;
+  font-size: $checkboxes-list__extra-uncheck-other-font;
+  margin-right: 1.46484375vw;
+  color: #3E9CE8;
 }
