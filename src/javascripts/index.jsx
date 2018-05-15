@@ -17,7 +17,7 @@ class App extends React.Component {
       oneStops: true,
       twoStops: false,
       threeStops: false,
-      testNumber: 1000,
+      showOnly: false,
     };
   }
 
@@ -37,9 +37,35 @@ class App extends React.Component {
     const AllStopsFilteredCountTrue = AllStops.filter(item => item === true).length;
     const isAllSelected = condition => (AllStopsFilteredCountTrue === 3 ? e.target.checked : false);
 
+    const isShowOnly = (name) => {
+      const states = ['all', 'noStops', 'oneStops', 'twoStops', 'threeStops'];
+      const statesFalseArray = states.filter(state => state !== name);
+      return statesFalseArray;
+    };
+
     this.setState({
       all: isAllSelected(),
       [name]: e.target.checked,
+    });
+  }
+
+  onHandleChangeOnly = (e) => {
+    const nameTarget = e.target.name;
+
+    const isClicked = (name) => {
+      if (name) {
+        return true;
+      }
+      return false;
+    };
+
+    this.setState({
+      all: false,
+      noStops: isClicked(),
+      oneStops: isClicked(),
+      twoStops: isClicked(),
+      threeStops: isClicked(),
+      [nameTarget]: true,
     });
   }
 
@@ -74,6 +100,7 @@ class App extends React.Component {
     const parameters = {
       handleChange: this.handleChange.bind(this),
       isAllSelec: this.isAllSelec.bind(this),
+      onHandleChangeOnly: this.onHandleChangeOnly.bind(this),
       state: stopsStatesAll,
       all: this.state.all,
       noStops: this.state.noStops,

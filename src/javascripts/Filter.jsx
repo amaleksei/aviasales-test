@@ -16,6 +16,10 @@ class Filter extends React.Component {
       onClick: isOnClick(item),
     };
 
+    const controlParametersShowOnly = {
+      onClick: this.props.onHandleChangeOnly,
+    };
+
     const result = (
       <div key={uniqueId()} className="filter__checkbox-item checkbox-item">
         <label className="checkbox-item__checkbox">
@@ -25,9 +29,13 @@ class Filter extends React.Component {
             {item.name}
           </span>
         </label>
-        <span className="checkbox-item__show-only">
-          {'только'.toUpperCase()}
-        </span>
+        {item.stops === 'all' ? [null] : [
+          <span className="checkbox-item__show-only" key={uniqueId()}>
+            <button name={item.stops} {...controlParametersShowOnly} className="checkbox-item__show-only-button">
+              {'только'.toUpperCase()}
+            </button>
+          </span>,
+        ]}
       </div>
     );
     return result;
@@ -58,6 +66,8 @@ class Filter extends React.Component {
 
     const handleChange = this.props;
     const isAllSelec = this.props;
+    // const isShowOnly = this.props;
+    const onHandleChangeOnly = this.props;
     return (
       <div className="filter">
         <div className="filter__header">{'Количество пересадок'.toUpperCase()}</div>
